@@ -7,6 +7,22 @@ class Etech_Mydata_IndexController extends Mage_Core_Controller_Front_Action {
 
         $this->loadLayout();
         $this->renderLayout();
+
+        $id = $this->getRequest()->getParam('id');
+        // echo   $id ;
+        $user_data = Mage::getModel('mydata/user');
+        if (!empty($id)) {
+            $model = Mage::getModel('mydata/mydata')->deleteByCondition($id);
+            $model2 = $user_data->userDeleteData($id);
+            try {
+
+                Mage::getSingleton('core/session')->addSuccess("One Row deleted");
+                $this->_redirect('mydata');
+            } catch (Exception $e) {
+                echo $e->getMessage();
+                $this->_redirect('mydata');
+            }
+        }
     }
 
     public function insertAction() {
@@ -24,7 +40,6 @@ class Etech_Mydata_IndexController extends Mage_Core_Controller_Front_Action {
             $profilermodel = Mage::getModel('mydata/profile');
             $usermodel = Mage::getModel('mydata/user')->firstData($user_data)->getId();
 
-
             //$insertId = $newmodel->save()->getId();
 
             if (!empty($usermodel)) {
@@ -35,6 +50,30 @@ class Etech_Mydata_IndexController extends Mage_Core_Controller_Front_Action {
             }
             Mage::getSingleton('core/session')->addSuccess("Data Inserted Succesfully");
             $this->_redirect('mydata');
+        }
+    }
+
+    public function updateAction() {
+
+        $this->loadLayout();
+        $this->renderLayout();
+        $edit_id = $this->getRequest()->getParam('edit_id');
+        $post = Mage::app()->getRequest()->getParams();
+        $user_data = array('user_name' => $post['user_name'], 'profile_id' => $post['profile_id']);
+        $profile_id = $user_data['profile_id'];
+
+        $profile_data = array('first_name' => $post['first_name'], 'last_name' => $post['last_name']);
+        if (!empty($post['first_name'])) {
+
+            $profilermodel = Mage::getModel('mydata/profile')->profileData($profile_id, $profile_data);
+            $model = Mage::getModel('mydata/user')->myupdateData($user_data, $edit_id);
+            try {
+                Mage::getSingleton('core/session')->addSuccess("One row Update");
+                $this->_redirect('mydata');
+            } catch (Exception $e) {
+                echo $e->getMessage();
+                $this->_redirect('mydata');
+            }
         }
     }
 

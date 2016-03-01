@@ -18,4 +18,13 @@ class Etech_Mydata_Block_Mydata extends Mage_Core_Block_Template {
         return $model;
     }
 
+    public function loalMyField() {
+
+        $edit_id = $this->getRequest()->getParam('edit_id');
+
+        $updata_Data = Mage::getModel('mydata/mydata')->updateByCondition($edit_id);
+
+        return $updata_Data;
+    }
+
 }
