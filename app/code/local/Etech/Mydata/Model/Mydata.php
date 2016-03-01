@@ -12,17 +12,7 @@ class Etech_Mydata_Model_Mydata extends Mage_Core_Model_Abstract {
         return $data;
     }
 
-    public function loadUpdate() {
-
-
-
-        //   $edit_id = $this->getResource()->loadByField();
-        // print_r($edit_id);
-        // $model->addFieldToFilter('profile_id',3);
-        // $id = $this->getRequest()->getParam('edit_id');
-        // echo $id;
-        //return $edit_id// $data = $this->getResource()->loadByUpdate();
-    }
+    
 
     public function deleteByCondition($id) {
         return $this->getResource()->deleteByCondition($id);

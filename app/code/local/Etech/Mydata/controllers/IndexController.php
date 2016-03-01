@@ -55,8 +55,7 @@ class Etech_Mydata_IndexController extends Mage_Core_Controller_Front_Action {
 
     public function updateAction() {
 
-        $this->loadLayout();
-        $this->renderLayout();
+        
         $edit_id = $this->getRequest()->getParam('edit_id');
         $post = Mage::app()->getRequest()->getParams();
         $user_data = array('user_name' => $post['user_name'], 'profile_id' => $post['profile_id']);
@@ -75,6 +74,9 @@ class Etech_Mydata_IndexController extends Mage_Core_Controller_Front_Action {
                 $this->_redirect('mydata');
             }
         }
+        
+        $this->loadLayout();
+        $this->renderLayout();
     }
 
 }

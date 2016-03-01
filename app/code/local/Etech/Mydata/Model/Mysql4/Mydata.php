@@ -24,16 +24,13 @@ class Etech_Mydata_Model_Mysql4_Mydata extends Mage_Core_Model_Mysql4_Abstract {
         $table2 = $this->getTable('mydata/user');
         $where = array();
         //$where[] =  $this->_getWriteAdapter()->quoteInto('id = ?',$id);
-        $where[] = $this->_getReadAdapter()->quoteInto("user_id = ? ", $id);
-         $select = $this->_getReadAdapter()->select()->from(array('profile' => $table))->join(array('user' => $table2), $cond);
-        $mydata = $this->_getReadAdapter()->fetchAll($select);
+        $where[] = $this->_getWriteAdapter()->quoteInto("user_id = ? ", $id);
+        $result = $this->_getWriteAdapter()->delete($table, $where);
 
         return $result;
     }
 
-    
-    
-    public function selectByCondition($edit_id) {
+      public function selectByCondition($edit_id) {
         
         
         $table = $this->getTable('mydata/profile');
@@ -46,8 +43,11 @@ class Etech_Mydata_Model_Mysql4_Mydata extends Mage_Core_Model_Mysql4_Abstract {
         return $mydata;
     }
     
-   
-  
+    
+    
+    
+    
+    
     
     
     
