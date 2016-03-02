@@ -11,9 +11,6 @@ class Etech_Mydata_Model_Profile extends Mage_Core_Model_Abstract {
         return $this->setData($post)->save();
     }
 
-    public function deleteData($id) {
-        return $this->user_id($id)->delete($id);
-    }
 
     public function profileData($id, $post) {
 

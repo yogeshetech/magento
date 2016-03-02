@@ -4,10 +4,6 @@ class Etech_Mydata_IndexController extends Mage_Core_Controller_Front_Action {
 
     public function indexAction() {
 
-
-        $this->loadLayout();
-        $this->renderLayout();
-
         $id = $this->getRequest()->getParam('id');
         // echo   $id ;
         $user_data = Mage::getModel('mydata/user');
@@ -23,13 +19,12 @@ class Etech_Mydata_IndexController extends Mage_Core_Controller_Front_Action {
                 $this->_redirect('mydata');
             }
         }
-    }
-
-    public function insertAction() {
-
 
         $this->loadLayout();
         $this->renderLayout();
+    }
+
+    public function insertAction() {
 
         $post = Mage::app()->getRequest()->getParams();
         $user_data = array('user_name' => $post['user_name']);
@@ -51,11 +46,14 @@ class Etech_Mydata_IndexController extends Mage_Core_Controller_Front_Action {
             Mage::getSingleton('core/session')->addSuccess("Data Inserted Succesfully");
             $this->_redirect('mydata');
         }
+
+        $this->loadLayout();
+        $this->renderLayout();
     }
 
     public function updateAction() {
 
-        
+
         $edit_id = $this->getRequest()->getParam('edit_id');
         $post = Mage::app()->getRequest()->getParams();
         $user_data = array('user_name' => $post['user_name'], 'profile_id' => $post['profile_id']);
@@ -74,7 +72,7 @@ class Etech_Mydata_IndexController extends Mage_Core_Controller_Front_Action {
                 $this->_redirect('mydata');
             }
         }
-        
+
         $this->loadLayout();
         $this->renderLayout();
     }
