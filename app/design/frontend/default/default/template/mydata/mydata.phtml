@@ -1,6 +1,6 @@
 
 <?php
-$model = $this->loadByField();
+$myData = $this->loadAllData();
 ?> 
 
 <div class="page-title">
@@ -27,16 +27,16 @@ $model = $this->loadByField();
     </thead>
     <tbody>
         <?php  $_odd = ''; ?>
-        <?php foreach ($model as $_order) : ?>
+        <?php foreach ($myData as $value) : ?>
             <tr >
-                <td class="number"><?php echo $_order['profile_id'] ?></td>
-                <td class="date"><span class="nobr"><?php echo $_order['user_id'] ?></span></td>
-                <td class="ship"><?php echo $_order['user_name'] ?></td>
-                <td class="total"><?php echo $_order['first_name'] ?></td>
-                <td class="status"><em><?php echo $_order['last_name'] ?></em></td>
+                <td class="number"><?php echo $value['profile_id'] ?></td>
+                <td class="date"><span class="nobr"><?php echo $value['user_id'] ?></span></td>
+                <td class="ship"><?php echo $value['user_name'] ?></td>
+                <td class="total"><?php echo $value['first_name'] ?></td>
+                <td class="status"><em><?php echo $value['last_name'] ?></em></td>
 
-                <td> <a href="index/update?edit_id=<?php echo($_order['user_id']); ?>"  >Update</a></td>
-                <td> <a href="?id=<?php echo($_order['user_id']); ?>" class="link-reorder">Delete</a></td>
+                <td> <a href="index/update?edit_id=<?php echo($value['user_id']); ?>"  >Update</a></td>
+                <td> <a href="?id=<?php echo($value['user_id']); ?>" class="link-reorder">Delete</a></td>
 
             </tr>
        <?php endforeach; ?>

@@ -7,7 +7,7 @@ class Etech_Mydata_Model_Mysql4_Mydata extends Mage_Core_Model_Mysql4_Abstract {
         $this->_init('mydata/mydata', 'mydata_id');
     }
 
-    public function loadByField() {
+    public function loadAllData() {
 
         $table = $this->getTable('mydata/profile');
         $table2 = $this->getTable('mydata/user');
