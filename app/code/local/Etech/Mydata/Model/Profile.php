@@ -7,7 +7,7 @@ class Etech_Mydata_Model_Profile extends Mage_Core_Model_Abstract {
         $this->_init('mydata/profile');
     }
 
-    public function lastData($post) {
+    public function insertProfileData($post) {
         return $this->setData($post)->save();
     }
 

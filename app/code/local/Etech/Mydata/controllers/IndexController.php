@@ -38,13 +38,13 @@ class Etech_Mydata_IndexController extends Mage_Core_Controller_Front_Action {
 
 
             $profilermodel = Mage::getModel('mydata/profile');
-            $usermodel = Mage::getModel('mydata/user')->firstData($user_data)->getId();
+            $usermodel = Mage::getModel('mydata/user')->insertUserData($user_data)->getId();
 
             //$insertId = $newmodel->save()->getId();
 
             if (!empty($usermodel)) {
                 $profile_data = array('user_id' => $usermodel, 'first_name' => $post['first_name'], 'last_name' => $post['last_name']);
-                $newid = $profilermodel->lastData($profile_data);
+                $newid = $profilermodel->insertProfileData($profile_data);
 
                 // $insertId2 = $newid->save()->getId();
             }

@@ -7,7 +7,7 @@ class Etech_Mydata_Model_User extends Mage_Core_Model_Abstract {
         $this->_init('mydata/user');
     }
 
-    public function firstData($username) {
+    public function insertUserData($username) {
         return $this->setData($username)->save();
     }
 
