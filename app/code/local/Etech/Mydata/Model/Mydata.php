@@ -7,12 +7,11 @@ class Etech_Mydata_Model_Mydata extends Mage_Core_Model_Abstract {
         $this->_init('mydata/mydata');
     }
 
-    public function loadByField() {
-        $data = $this->getResource()->loadByField();
+    public function loadAllData() {
+        $data = $this->getResource()->loadAllData();
         return $data;
     }
 
-    
 
     public function deleteByCondition($id) {
         return $this->getResource()->deleteByCondition($id);
@@ -20,9 +19,7 @@ class Etech_Mydata_Model_Mydata extends Mage_Core_Model_Abstract {
 
     public function updateByCondition($edit_id) {
        
-        $data = $this->getResource()->selectByCondition($edit_id);
-      
-          
+        $data = $this->getResource()->selectByCondition($edit_id);   
         return $data;
     }
 
