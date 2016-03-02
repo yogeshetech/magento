@@ -12,4 +12,18 @@ class Etech_Mydata_Model_Mydata extends Mage_Core_Model_Abstract {
         return $data;
     }
 
+    
+
+    public function deleteByCondition($id) {
+        return $this->getResource()->deleteByCondition($id);
+    }
+
+    public function updateByCondition($edit_id) {
+       
+        $data = $this->getResource()->selectByCondition($edit_id);
+      
+          
+        return $data;
+    }
+
 }
