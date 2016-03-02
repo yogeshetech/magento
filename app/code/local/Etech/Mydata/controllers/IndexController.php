@@ -9,7 +9,7 @@ class Etech_Mydata_IndexController extends Mage_Core_Controller_Front_Action {
         $user_data = Mage::getModel('mydata/user');
         if (!empty($id)) {
             $model = Mage::getModel('mydata/mydata')->deleteByCondition($id);
-            $model2 = $user_data->userDeleteData($id);
+            $new_model = $user_data->userDeleteData($id);
             try {
 
                 Mage::getSingleton('core/session')->addSuccess("One Row deleted");
