@@ -2,8 +2,15 @@
 
 class Etech_Mydata_Block_Mydata extends Mage_Core_Block_Template {
 
-    public function _prepareLayout() {
-        return parent::_prepareLayout();
+    protected function _prepareLayout() {
+        parent::_prepareLayout();
+
+        $pager = $this->getLayout()->createBlock('page/html_pager', 'custom.pager');
+        $pager->setAvailableLimit(array(5 => 5, 10 => 10, 20 => 20, 'all' => 'all'));
+        $pager->setCollection($this->getCollection());
+        $this->setChild('pager', $pager);
+        $this->getCollection()->load();
+        return $this;
     }
 
     public function getMydata() {
@@ -14,8 +21,8 @@ class Etech_Mydata_Block_Mydata extends Mage_Core_Block_Template {
     }
 
     public function loadAllData() {
-        $model = Mage::getModel('mydata/mydata')->loadAllData();
-        return $model;
+        // $model = Mage::getModel('mydata/mydata')->loadAllData();
+        //return $model;
     }
 
     public function loadUpdateData() {
@@ -25,6 +32,27 @@ class Etech_Mydata_Block_Mydata extends Mage_Core_Block_Template {
         $updata_Data = Mage::getModel('mydata/mydata')->updateByCondition($edit_id);
 
         return $updata_Data;
+    }
+
+    public function __construct() {
+        parent::__construct();
+        $collection = Mage::getModel('mydata/profile')->getCollection();
+    
+       // $collection = new Varien_Data_Select();
+    
+        //foreach ($rows as $row) {
+        
+          //  $rowObj = new Varien_Object();
+           // $rowObj->setData($row);
+           // $collection->addItem($rowObj);
+       // }
+     
+        $this->setCollection($collection);
+       // parent::_prepareCollection();
+    }
+
+    public function getPagerHtml() {
+        return $this->getChildHtml('pager');
     }
 
 }
