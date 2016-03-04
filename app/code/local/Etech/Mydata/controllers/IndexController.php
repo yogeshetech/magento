@@ -5,18 +5,18 @@ class Etech_Mydata_IndexController extends Mage_Core_Controller_Front_Action {
     public function indexAction() {
 
         $id = $this->getRequest()->getParam('id');
-        // echo   $id ;
         $user_data = Mage::getModel('mydata/user');
         if (!empty($id)) {
             $model = Mage::getModel('mydata/mydata')->deleteByCondition($id);
             $new_model = $user_data->userDeleteData($id);
+
             try {
 
                 Mage::getSingleton('core/session')->addSuccess("One Row deleted");
-                $this->_redirect('mydata');
+                // $this->_redirect('mydata');
             } catch (Exception $e) {
                 echo $e->getMessage();
-                $this->_redirect('mydata');
+                //  $this->_redirect('mydata');
             }
         }
 
