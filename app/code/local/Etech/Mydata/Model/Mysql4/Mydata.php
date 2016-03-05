@@ -30,26 +30,17 @@ class Etech_Mydata_Model_Mysql4_Mydata extends Mage_Core_Model_Mysql4_Abstract {
         return $result;
     }
 
-      public function selectByCondition($edit_id) {
-        
-        
+    public function selectByCondition($edit_id) {
+
+
         $table = $this->getTable('mydata/profile');
         $table2 = $this->getTable('mydata/user');
         $cond = $this->_getReadAdapter()->quoteInto('profile.user_id = user.user_id', '');
         $where = $this->_getReadAdapter()->quoteInto('profile.user_id = ?', $edit_id);
         $select = $this->_getReadAdapter()->select()->from(array('profile' => $table))->join(array('user' => $table2), $cond)->where($where);
         $mydata = $this->_getReadAdapter()->fetchAll($select);
-         //print_r($mydata);
+        //print_r($mydata);
         return $mydata;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }

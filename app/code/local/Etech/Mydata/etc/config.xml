@@ -8,6 +8,9 @@
 */
 -->
 <config>
+    
+ 
+    
     <modules>
         <Etech_Mydata>
             <version>0.1.0</version>
@@ -104,6 +107,21 @@
         </layout>
     </adminhtml>   
     <global>
+        <blocks>
+            <catalog>
+                <rewrite>
+                    <product_price>Etech_Mydata_Block_Catalog_Product_Price</product_price>
+                </rewrite>
+            </catalog>
+        </blocks>
+        <models>
+            <catalog>
+                <rewrite>
+                    <layer>Etech_Mydata_Model_Layer</layer>
+                </rewrite>
+            </catalog>
+        </models>
+     
         <models>
             <mydata>
                 <class>Etech_Mydata_Model</class>
@@ -155,8 +173,23 @@
                 <class>Etech_Mydata_Helper</class>
             </mydata>
         </helpers>
+        <helpers>
+            <customer>
+                <rewrite>
+                    <data>Etech_Mydata_Helper_Data</data>
+                </rewrite>
+            </customer>
+        </helpers>
+
     </global>
     
+    <global>
+        <rewrite>
+            <etech_mydata_checkout_cart> <!--This can be any unique id -->
+                <from><![CDATA[#^/checkout/cart/#]]></from>  <!-- the URL which u want to override-->
+                <to>/mydata/checkout_cart/</to>  <!-- destination url -->
+            </etech_mydata_checkout_cart>
+        </rewrite>
+    </global>
 
- 
 </config>
