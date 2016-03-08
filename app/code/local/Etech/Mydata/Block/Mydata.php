@@ -38,11 +38,11 @@ class Etech_Mydata_Block_Mydata extends Mage_Core_Block_Template {
         parent::__construct();
         $rows = Mage::getModel('mydata/mydata')->loadAllData();
 
-         $collection = new Varien_Data_Collection();
+        $collection = new Varien_Data_Collection();
         foreach ($rows as $row) {
-         $rowObj = new Varien_Object();
-         $rowObj->setData($row);
-         $collection->addItem($rowObj);
+            $rowObj = new Varien_Object();
+            $rowObj->setData($row);
+            $collection->addItem($rowObj);
         }
 
         $this->setCollection($collection);
@@ -57,7 +57,12 @@ class Etech_Mydata_Block_Mydata extends Mage_Core_Block_Template {
         $update_Data = Mage::getModel('mydata/mydata')->adminData();
         return $update_Data;
     }
-    
-    
+
+    public function loginDetails() {
+
+        $model = Mage::getModel('mydata/mydata')->loginDetails();
+
+        return $model;
+    }
 
 }

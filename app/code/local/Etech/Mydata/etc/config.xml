@@ -16,7 +16,34 @@
             <version>0.1.0</version>
         </Etech_Mydata>
     </modules>
+  
     <frontend>
+        <events>
+            <customer_login> <!-- Name of Event -->
+                <observers>
+                    <login_time> <!-- Any Unique Identifier -->
+                        <type>singleton</type>
+                        <class>Etech_Mydata_Model_Observer</class> <!-- Over Model Class -->
+                        <method>customerLogin</method> <!-- name of function -->
+                    </login_time>
+                </observers>
+            </customer_login>    
+        </events>
+        <events>
+            <customer_logout> <!-- Name of Event -->
+                <observers>
+                    <logout_time> <!-- Any Unique Identifier -->
+                        <type>singleton</type>
+                        <class>Etech_Mydata_Model_Observer</class> <!-- Over Model Class -->
+                        <method>customerLogout</method> <!-- name of function -->
+                    </logout_time>
+                </observers>
+            </customer_logout>    
+        </events>
+      
+      
+        
+        
         <routers>
             <mydata>
                 <use>standard</use>
@@ -33,6 +60,9 @@
                 </mydata>
             </updates>
         </layout>
+        
+        
+        
     </frontend>
     <admin>
         <routers>
@@ -139,6 +169,9 @@
                     <user>
                         <table>user</table>
                     </user>
+                     <login>
+                        <table>login</table>
+                    </login>
                   
                 </entities>
             </mydata_mysql4>
@@ -173,14 +206,7 @@
                 <class>Etech_Mydata_Helper</class>
             </mydata>
         </helpers>
-        <helpers>
-            <customer>
-                <rewrite>
-                    <data>Etech_Mydata_Helper_Data</data>
-                </rewrite>
-            </customer>
-        </helpers>
-
+        
     </global>
     
     <global>

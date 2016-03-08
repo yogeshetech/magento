@@ -43,4 +43,13 @@ class Etech_Mydata_Model_Mysql4_Mydata extends Mage_Core_Model_Mysql4_Abstract {
         return $mydata;
     }
 
+    public function loginDetail() {
+        $table = $this->getTable('mydata/login');
+        // $where = $this->_getReadAdapter()->quoteInto("id = ?", 123);
+        $select = $this->_getReadAdapter()->select()->from($table)->columns(array('id'))->limit(1)->order('id desc');
+     
+        $mydata = $this->_getReadAdapter()->fetchAll($select);
+        return $mydata;
+    }
+
 }

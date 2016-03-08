@@ -30,4 +30,11 @@ class Etech_Mydata_Model_Mydata extends Mage_Core_Model_Abstract {
         return $myData;
     }
 
+    public function loginDetails() {
+
+
+        $collection = $this->getResource()->loginDetail();
+        return $collection;
+    }
+
 }
