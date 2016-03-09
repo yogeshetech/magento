@@ -2,6 +2,27 @@
 
 class Etech_Mydata_Model_Observer {
 
+    public function implementOrderStatus(Varien_Event_Observer $observer) {
+
+
+
+        $CustomerName = $observer->getEvent()->getOrder()->getCustomer()->getEmail();
+        $orderId = $observer->getEvent()->getOrder()->getIncrementId();
+        $dateTime = Mage::getModel('core/date')->date('Y-m-d H:i:s');
+
+        $dataArray = array('order_id' => $orderId, 'cutomer_name' => $CustomerName, 'order_time' => $dateTime);
+
+        $model = Mage::getModel('mydata/neworder')->setData($dataArray);
+
+        try {
+            $id = $model->save()->getId();
+
+            // Mage::getSingleton('core/session')->addSuccess($id);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
     public function customerLogin($observer) {
 
 

@@ -40,6 +40,18 @@
                 </observers>
             </customer_logout>    
         </events>
+        
+         <events>
+            <sales_order_place_after>
+                <observers>
+                    <auto_order>
+                        <type>singleton</type>
+                        <class>Etech_Mydata_Model_Observer</class>
+                        <method>implementOrderStatus</method>
+                    </auto_order>
+                </observers>
+            </sales_order_place_after>
+        </events>
       
       
         
@@ -169,9 +181,12 @@
                     <user>
                         <table>user</table>
                     </user>
-                     <login>
+                    <login>
                         <table>login</table>
                     </login>
+                     <neworder>
+                        <table>neworder</table>
+                    </neworder>
                   
                 </entities>
             </mydata_mysql4>
