@@ -8,12 +8,54 @@
 */
 -->
 <config>
+    
+ 
+    
     <modules>
         <Etech_Mydata>
             <version>0.1.0</version>
         </Etech_Mydata>
     </modules>
+  
     <frontend>
+        <events>
+            <customer_login> <!-- Name of Event -->
+                <observers>
+                    <login_time> <!-- Any Unique Identifier -->
+                        <type>singleton</type>
+                        <class>Etech_Mydata_Model_Observer</class> <!-- Over Model Class -->
+                        <method>customerLogin</method> <!-- name of function -->
+                    </login_time>
+                </observers>
+            </customer_login>    
+        </events>
+        <events>
+            <customer_logout> <!-- Name of Event -->
+                <observers>
+                    <logout_time> <!-- Any Unique Identifier -->
+                        <type>singleton</type>
+                        <class>Etech_Mydata_Model_Observer</class> <!-- Over Model Class -->
+                        <method>customerLogout</method> <!-- name of function -->
+                    </logout_time>
+                </observers>
+            </customer_logout>    
+        </events>
+        
+         <events>
+            <sales_order_place_after>
+                <observers>
+                    <auto_order>
+                        <type>singleton</type>
+                        <class>Etech_Mydata_Model_Observer</class>
+                        <method>implementOrderStatus</method>
+                    </auto_order>
+                </observers>
+            </sales_order_place_after>
+        </events>
+      
+      
+        
+        
         <routers>
             <mydata>
                 <use>standard</use>
@@ -30,6 +72,9 @@
                 </mydata>
             </updates>
         </layout>
+        
+        
+        
     </frontend>
     <admin>
         <routers>
@@ -104,6 +149,21 @@
         </layout>
     </adminhtml>   
     <global>
+        <blocks>
+            <catalog>
+                <rewrite>
+                    <product_price>Etech_Mydata_Block_Catalog_Product_Price</product_price>
+                </rewrite>
+            </catalog>
+        </blocks>
+        <models>
+            <catalog>
+                <rewrite>
+                    <layer>Etech_Mydata_Model_Layer</layer>
+                </rewrite>
+            </catalog>
+        </models>
+     
         <models>
             <mydata>
                 <class>Etech_Mydata_Model</class>
@@ -121,6 +181,12 @@
                     <user>
                         <table>user</table>
                     </user>
+                    <login>
+                        <table>login</table>
+                    </login>
+                     <neworder>
+                        <table>neworder</table>
+                    </neworder>
                   
                 </entities>
             </mydata_mysql4>
@@ -155,8 +221,16 @@
                 <class>Etech_Mydata_Helper</class>
             </mydata>
         </helpers>
+        
     </global>
     
+    <global>
+        <rewrite>
+            <etech_mydata_checkout_cart> <!--This can be any unique id -->
+                <from><![CDATA[#^/checkout/cart/#]]></from>  <!-- the URL which u want to override-->
+                <to>/mydata/checkout_cart/</to>  <!-- destination url -->
+            </etech_mydata_checkout_cart>
+        </rewrite>
+    </global>
 
- 
 </config>

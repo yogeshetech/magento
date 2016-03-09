@@ -4,13 +4,19 @@
     </default>
     <mydata_index_index>
 
-<reference name="head">
-    <action method="addJs"><script>jquery/jquery-1.12.0.js</script></action>
- <action method="addJs">  <script> </script></action>
-<action method="addJs"><script>jquery/etech.js</script></action>
+        <reference name="head">
+            <action method="addJs">
+                <script>jquery/jquery-1.12.0.js</script>
+            </action>
+            <action method="addJs">  
+                <script> </script>
+            </action>
+            <action method="addJs">
+                <script>jquery/etech.js</script>
+            </action>
 
 
-</reference>
+        </reference>
         <reference name="content">
             <block type="mydata/mydata" name="mydata" template="mydata/mydata.phtml" />
         </reference>
@@ -26,11 +32,11 @@
             <block type="mydata/mydata" name="newtest3" template="mydata/update.phtml" />
         </reference>
     </mydata_index_update>
-	
-
-
-
-
-
+    
+    <mydata_index_login>
+        <reference name="content">
+            <block type="mydata/mydata" name="newtest4" template="mydata/login.phtml" />
+        </reference>
+    </mydata_index_login>
 
 </layout> 

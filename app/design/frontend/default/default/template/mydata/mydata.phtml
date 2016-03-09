@@ -29,7 +29,7 @@ $myData = $this->adminData();
             <tr>
                 <th class="number"><?php echo $this->__('Profile Id') ?></th>
                 <th class="date"><?php echo $this->__('User Id') ?></th>
-
+                 <th class="date"><?php echo $this->__('User Name') ?></th>
                 <th class="total"><span class="nobr"><?php echo $this->__('First Name') ?></span></th>
                 <th class="total"><span class="nobr"><?php echo $this->__('Last Name') ?></span></th>
                 <th class="status"><span class="nobr"><?php echo $this->__('Update') ?></span></th>
@@ -42,7 +42,7 @@ $myData = $this->adminData();
                 <tr class="<?php echo($value['user_id']); ?>">
                     <td class="number"><?php echo $value['profile_id'] ?></td>
                     <td class="date"><span class="nobr"><?php echo $value['user_id'] ?></span></td>
-
+                     <td class="total"><?php echo $value['user_name'] ?></td>
 
                     <td class="total"><?php echo $value['first_name'] ?></td>
                     <td class="status"><em><?php echo $value['last_name'] ?></em></td>

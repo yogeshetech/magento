@@ -3,7 +3,10 @@
 class Etech_Mydata_IndexController extends Mage_Core_Controller_Front_Action {
 
     public function indexAction() {
-
+     
+        
+      
+        
         $id = $this->getRequest()->getParam('id');
         $user_data = Mage::getModel('mydata/user');
         if (!empty($id)) {
@@ -25,6 +28,9 @@ class Etech_Mydata_IndexController extends Mage_Core_Controller_Front_Action {
     }
 
     public function insertAction() {
+        
+        
+        
 
         $post = Mage::app()->getRequest()->getParams();
         $user_data = array('user_name' => $post['user_name']);
@@ -76,5 +82,11 @@ class Etech_Mydata_IndexController extends Mage_Core_Controller_Front_Action {
         $this->loadLayout();
         $this->renderLayout();
     }
+    public function mydataAction() {
+
+       $this->loadLayout();
+        $this->renderLayout();
+    }
+    
 
 }
